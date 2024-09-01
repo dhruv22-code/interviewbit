@@ -1,0 +1,14 @@
+int Solution::solve(vector<int> &A, int B) {
+     int cxor = 0, count = 0;
+     int n1 = A.size();
+    unordered_map<int, int>m;
+    m[0] = 1;
+    for(int i = 0; i < n1; i++){
+        cxor = cxor ^ A[i];
+        if(m.find(cxor ^ B) != m.end()){
+            count+=m[cxor^B];
+        }
+        m[cxor]++;
+    }
+    return count;
+}
